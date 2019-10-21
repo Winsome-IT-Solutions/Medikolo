@@ -12,22 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
-Route::get('about','AboutController@index');
-//---Admin routes
-Route::namespace('Admin\Auth')->prefix('masters')->group(function(){
-
-    Route::get('login','LoginController@index');
-    Route::get('register','RegisterController@index');
-    //Route::get('masterslist', 'MasterController@index');
-    //Route::get('mastersinfo/{masterId}', 'MasterController@masterInfo');
-  });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about','AboutController@index')->name('about');
+Route::get('admin/dashboard', 'DashboardController@index')->middleware('admin');
+/*Route::group(['middleware'=>['auth','admin']],function(){
+    Route::resource('admin/dashboard', 'DashboardController@index')->name('dashboard');
+});*/
+

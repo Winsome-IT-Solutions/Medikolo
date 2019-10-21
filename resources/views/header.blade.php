@@ -62,15 +62,43 @@
 	      <p class="button-custom order-lg-last mb-0"><a href="appointment.html" class="btn btn-secondary py-2 px-3">Make An Appointment</a></p>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item active"><a href="{{url('home')}}" class="nav-link pl-0">Home</a></li>
 	        	<li class="nav-item"><a href="{{ url('about') }}" class="nav-link">About</a></li>
-	        	<li class="nav-item"><a href="doctor.html" class="nav-link">Doctor</a></li>
-	        	<li class="nav-item"><a href="department.html" class="nav-link">Departments</a></li>
-	        	<li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-	        	<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-              <li class="nav-item"><a href="contact.html" class="nav-link">Register</a></li>
-              <li class="nav-item"><a href="contact.html" class="nav-link">Login</a></li>
+	        	<li class="nav-item"><a href="" class="nav-link">Doctor</a></li>
+	        	<li class="nav-item"><a href="" class="nav-link">Departments</a></li>
+	        	<li class="nav-item"><a href="" class="nav-link">Pricing</a></li>
+	        	<li class="nav-item"><a href="" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+			  @if (Route::has('login'))
+                
+                    @auth
+                    <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                    @else
+                      <li class="nav-item">  <a href="{{ route('login') }}">Login</a></li>
+
+                        @if (Route::has('register'))
+                          <li class="nav-item">  <a href="{{ route('register') }}">Register</a></li>
+                        @endif
+                    @endauth
+                
+            @endif
+              
 	        </ul>
 	      </div>
 	    </div>
