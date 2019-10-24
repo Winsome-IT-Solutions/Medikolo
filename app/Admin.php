@@ -6,19 +6,18 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
-    const ADMIN_TYPE = 'admin';
-    const USER_TYPE = 'user';
-    const DOCTOR_TYPE = 'doctor';
+    protected $guard = 'admin';
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone'
+        'name', 'email', 'password','phone','job_title',
     ];
 
     /**
@@ -27,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','type'
+        'password', 'remember_token',
     ];
 
     /**
@@ -38,6 +37,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-   
-
+  
 }
