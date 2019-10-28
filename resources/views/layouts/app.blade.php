@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="shortcut icon" href="{{ asset('../assets/medikolo/logo_medikolo.png') }}">
     <title>Medikolo</title>
 
     <!-- Scripts -->

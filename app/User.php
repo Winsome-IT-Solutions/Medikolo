@@ -9,9 +9,9 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-    const ADMIN_TYPE = 'admin';
-    const USER_TYPE = 'user';
-    const DOCTOR_TYPE = 'doctor';
+    //const ADMIN_TYPE = 'admin';
+    //const USER_TYPE = 'user';
+    //const DOCTOR_TYPE = 'doctor';
     /**
      * The attributes that are mass assignable.
      *
